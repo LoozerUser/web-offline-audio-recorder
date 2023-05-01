@@ -24,14 +24,8 @@ function bulber(event){
   var cond = navigator.onLine ? "Online" : "Offline";
   var elements = document.getElementsByClassName("bulb");
   for(var i=0; i<elements.length; i++) { 
-   elements[i].innerHTML = "zzzz";
+   elements[i].innerHTML = cond;
   }
-}
-
-smt = navigator.onLine ? "Online": "Offline";
-var elements = document.getElementsByClassName("bulb");
-for(var i=0; i<elements.length; i++) { 
-  elements[i].innerHTML = smt;
 }
 
 //main block for doing the audio recording
