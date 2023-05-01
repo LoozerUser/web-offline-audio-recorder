@@ -130,9 +130,13 @@ if (navigator.mediaDevices.getUserMedia) {
 
       var elements = document.getElementsByClassName("classic");
       for(var i=0; i<elements.length; i++) { 
-        elements[i].addEventListener('click', addData);
+        elements[i].addEventListener('click', kkk);
       }
 
+      function kkk(){
+        window.alert("works!")
+      }
+      
       async function addData() {
         window.alert("works!")
         const tx = await db.transaction('recs', 'readwrite');
