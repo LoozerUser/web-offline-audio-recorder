@@ -37,13 +37,11 @@ function bulber(event){
 
 // for blobs or cache that act like cookies also in offline mode
 
-import { openDB } from 'idb';
-
 async function createDB() {
 
   window.alert("dddd");
 
-  const db = await openDB('clips', 1, {
+  const db = await idb.openDB('clips', 1, {
     upgrade(db, oldVersion, newVersion, transaction) {
 
       switch (oldVersion) {
