@@ -15,7 +15,7 @@ stop.disabled = true;
 let audioCtx;
 const canvasCtx = canvas.getContext("2d");
 
-// online offline detection presentation and later usage
+// online offline detection and presentation
 
 
 smt = navigator.onLine ? "Online": "Offline";
@@ -35,6 +35,30 @@ function bulber(event){
   }
 }
 
+// for blobs or cache that act like cookies also in offline mode
+
+import { openDB } from 'idb';
+
+async function createDB() {
+
+  const db = await openDB('clips', 1, {
+    upgrade(db, oldVersion, newVersion, transaction) {
+
+      switch (oldVersion) {
+        case 0:
+
+        case 1:
+
+          const store = db.createObjectStore('recipes', {
+
+            autoIncrement: true,
+            keyPath: 'id'
+          });
+          store.createIndex('index', 'index');
+      }
+    }
+  });
+}
 
 //main block for doing the audio recording
 
