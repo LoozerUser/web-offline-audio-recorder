@@ -137,10 +137,8 @@ if (navigator.mediaDevices.getUserMedia) {
 
       addData;
 
-      var elements = document.getElementsByClassName("classic");
-      for(var i=0; i<elements.length; i++) { 
-       elements[i].addEventListener('click', kkk);
-      }
+      document.getElementsById("idic").addEventListener('click', kkk);
+
       function kkk(){
         window.alert("works!");
       }
