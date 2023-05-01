@@ -17,15 +17,15 @@ const canvasCtx = canvas.getContext("2d");
 
 // online offline detection presentation and later usage
 
-window.alert("works!")
-
-window.addEventListener('online', bulber)
-window.addEventListener('offline', bulber)
+window.alert("works!");
 
 function bulber(event){
   var cond = navigator.onLine ? "Online" : "Offline";
   document.getElementsByClassName("bulb").innerHTML = "cond";
 }
+
+window.addEventListener('online', bulber);
+window.addEventListener('offline', bulber);
 
 document.getElementsByClassName("bulb").innerHTML = "cond";
 
