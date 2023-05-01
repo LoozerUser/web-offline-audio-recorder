@@ -60,6 +60,11 @@ async function createDB() {
 
 createDB();
 
+document.getElementsById("idic").addEventListener('click', kkk);
+
+function kkk(){
+  window.alert("works!");
+}
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
@@ -95,11 +100,6 @@ if (navigator.mediaDevices.getUserMedia) {
       record.disabled = false;
     }
 
-    document.getElementsById("idic").addEventListener('click', kkk);
-
-    function kkk(){
-      window.alert("works!");
-    }
 
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
