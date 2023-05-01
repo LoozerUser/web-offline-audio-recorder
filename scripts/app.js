@@ -27,6 +27,8 @@ function bulber(event){
   document.getElementsByClassName("bulb").innerHTML = "cond"
 }
 
+document.getElementsByClassName("bulb").innerHTML = "cond"
+
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
