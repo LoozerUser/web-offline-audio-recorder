@@ -30,7 +30,7 @@ function bulber(event){
 document.getElementsByClassName("bulb").innerHTML = "cond";
 var elements = document.getElementsByClassName("bulb");
 for(var i=0; i<elements.length; i++) { 
-  elements[i].style.display='none';
+  elements[i].innerHTML ='none';
 }
 
 //main block for doing the audio recording
