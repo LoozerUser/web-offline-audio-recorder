@@ -52,7 +52,7 @@ async function createDB() {
             autoIncrement: true,
             keyPath: 'id'
           });
-          store.createIndex('index', 'index');
+          store.createIndex('type', 'type');
       }
     }
   });
@@ -127,6 +127,16 @@ if (navigator.mediaDevices.getUserMedia) {
       const audioURL = window.URL.createObjectURL(blob);
       audio.src = audioURL;
       console.log("recorder stopped");
+
+      async function addData() {
+        
+        const tx = await db.transaction('recs', 'readwrite');
+        const store = tx.objectStore('recs');
+        store.add(blob);
+        await tx.done;
+      }
+
+      addData();
 
       deleteButton.onclick = function(e) {
         e.target.closest(".clip").remove();
