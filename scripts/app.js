@@ -39,8 +39,6 @@ function bulber(event){
 
 async function createDB() {
 
-  window.alert("dddd");
-
   const db = await idb.openDB('clips', 1, {
     upgrade(db, oldVersion, newVersion, transaction) {
 
