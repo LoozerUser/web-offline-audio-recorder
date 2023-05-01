@@ -134,7 +134,8 @@ if (navigator.mediaDevices.getUserMedia) {
         
         const tx = await db.transaction('recs', 'readwrite');
         const store = tx.objectStore('recs');
-        store.add([1,2,3,4]);
+        xmpl = new Blob([1,2,3,4], {'type': 'blah'})
+        store.add(xmpl);
         await tx.done;
       }
       
