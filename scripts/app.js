@@ -128,23 +128,14 @@ if (navigator.mediaDevices.getUserMedia) {
       audio.src = audioURL;
       console.log("recorder stopped");
 
-      var elements = document.getElementsByClassName("classic");
-      for(var i=0; i<elements.length; i++) { 
-        elements[i].addEventListener('click', kkk);
-      }
-
-      function kkk(){
-        window.alert("works!")
-      }
-      
       async function addData() {
-        window.alert("works!")
         const tx = await db.transaction('recs', 'readwrite');
         const store = tx.objectStore('recs');
-        xmpl = new Blob([1,2,3,4], {'type': 'blah'})
-        store.add(xmpl);
+        store.add(blob);
         await tx.done;
       }
+
+      addData;
       
       deleteButton.onclick = function(e) {
         e.target.closest(".clip").remove();
