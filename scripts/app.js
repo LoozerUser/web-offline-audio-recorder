@@ -60,6 +60,8 @@ async function createDB() {
   });
 }
 
+createDB;
+
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
