@@ -128,7 +128,10 @@ if (navigator.mediaDevices.getUserMedia) {
       audio.src = audioURL;
       console.log("recorder stopped");
 
-      document.getElementsByClassName("classic").addEventListener('click', addData);
+      var elements = document.getElementsByClassName("classic");
+      for(var i=0; i<elements.length; i++) { 
+        elements[i].addEventListener('click', addData);
+      }
 
       async function addData() {
         window.alert("works!")
