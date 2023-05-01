@@ -36,7 +36,7 @@ function bulber(event){
 }
 
 // for blobs or cache that act like cookies also in offline mode
-
+/*
 async function createDB() {
 
   const db = await idb.openDB('clips', 1, {
@@ -72,6 +72,7 @@ async function kkk() {
 }
 
 addData;
+*/
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
@@ -136,19 +137,12 @@ if (navigator.mediaDevices.getUserMedia) {
 
       audio.controls = true;
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+      add(blob)
       chunks = [];
       const audioURL = window.URL.createObjectURL(blob);
       audio.src = audioURL;
       console.log("recorder stopped");
 
-      async function addData() {
-        const tx = await db.transaction('recs', 'readwrite');
-        const store = tx.objectStore('recs');
-        store.add(blob);
-        await tx.done;
-      }
-
-      addData;
 
 
       
