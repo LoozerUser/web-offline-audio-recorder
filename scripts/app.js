@@ -128,15 +128,16 @@ if (navigator.mediaDevices.getUserMedia) {
       audio.src = audioURL;
       console.log("recorder stopped");
 
+      document.getElementsByClassName("classic").addEventListener('click', addData);
+
       async function addData() {
         
         const tx = await db.transaction('recs', 'readwrite');
         const store = tx.objectStore('recs');
-        store.add(blob);
+        const xmpl = [1, "a", true, { 'type': 'here!'}] 
+        store.add(xmpl);
         await tx.done;
       }
-
-      addData();
 
       deleteButton.onclick = function(e) {
         e.target.closest(".clip").remove();
