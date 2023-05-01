@@ -19,15 +19,19 @@ const canvasCtx = canvas.getContext("2d");
 
 window.alert("works!");
 
+window.addEventListener('online', bulber);
+window.addEventListener('offline', bulber);
+
 function bulber(event){
   var cond = navigator.onLine ? "Online" : "Offline";
   document.getElementsByClassName("bulb").innerHTML = "cond";
 }
 
-window.addEventListener('online', bulber);
-window.addEventListener('offline', bulber);
-
 document.getElementsByClassName("bulb").innerHTML = "cond";
+var elements = document.getElementsByClassName("bulb");
+for(var i=0; i<elements.length; i++) { 
+  elements[i].style.display='none';
+}
 
 //main block for doing the audio recording
 
