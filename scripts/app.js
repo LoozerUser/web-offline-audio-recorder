@@ -22,7 +22,7 @@ window.addEventListener('offline', bulber)
 
 function bulber(event){
   var cond = navigator.onLine ? "Online" : "Offline";
-  document.body.getElementsByClassName("bulb") = cond
+  document.getElementsByClassName("bulb") = cond
 }
 
 //main block for doing the audio recording
