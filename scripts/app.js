@@ -62,9 +62,16 @@ createDB();
 
 document.getElementById("idic").addEventListener('click', kkk);
 
-function kkk(){
-  window.alert("works!");
+async function kkk() {
+  window.alert("vroom!!")
+  const tx = await db.transaction('recs', 'readwrite');
+  const store = tx.objectStore('recs');
+  xmpl = new Blob([1, "a", true], {'type': 'here!'})
+  store.add(xmpl);
+  await tx.done;
 }
+
+addData;
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
