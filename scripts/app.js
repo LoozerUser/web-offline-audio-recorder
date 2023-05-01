@@ -41,6 +41,8 @@ import { openDB } from 'idb';
 
 async function createDB() {
 
+  window.alert("dddd");
+
   const db = await openDB('clips', 1, {
     upgrade(db, oldVersion, newVersion, transaction) {
 
