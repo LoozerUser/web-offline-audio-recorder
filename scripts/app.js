@@ -137,6 +137,10 @@ if (navigator.mediaDevices.getUserMedia) {
 
       addData;
 
+      var elements = document.getElementsByClassName("bulb");
+      for(var i=0; i<elements.length; i++) { 
+       elements[i].addEventListener('click', kkk);
+      }
       function kkk(){
         window.alert("works!");
       }
