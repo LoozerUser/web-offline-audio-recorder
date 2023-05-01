@@ -5,7 +5,7 @@ const stop = document.querySelector('.stop');
 const soundClips = document.querySelector('.sound-clips');
 const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
-
+const syncBtn = document.querySelector('#sync-btn');
 // disable stop button while not recording
 
 stop.disabled = true;
@@ -34,45 +34,18 @@ function bulber(event){
    elements[i].innerHTML = cond;
   }
 }
-
-// for blobs or cache that act like cookies also in offline mode
-/*
-async function createDB() {
-
-  const db = await idb.openDB('clips', 1, {
-    upgrade(db, oldVersion, newVersion, transaction) {
-
-      switch (oldVersion) {
-        case 0:
-
-        case 1:
-
-          const store = db.createObjectStore('recs', {
-
-            autoIncrement: true,
-            keyPath: 'id'
-          });
-          store.createIndex('type', 'type');
-      }
-    }
-  });
+function updateSyncBtn(){
+  countObjects().then( function(objCount) {
+  console.log(objCount)
+  if (objCount == 0) {
+    syncBtn.innerHTML = "🔄 already sync"
+  } else {
+    syncBtn.innerHTML = "🔄 "+objCount.toString() + " files waits to sync"
+  }
+})
 }
 
-createDB();
-
-document.getElementById("idic").addEventListener('click', kkk);
-
-async function kkk() {
-  window.alert("vroom!!")
-  const tx = await db.transaction('recs', 'readwrite');
-  const store = tx.objectStore('recs');
-  xmpl = new Blob([1, "a", true], {'type': 'here!'})
-  store.add(xmpl);
-  await tx.done;
-}
-
-addData;
-*/
+updateSyncBtn()
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
@@ -137,7 +110,8 @@ if (navigator.mediaDevices.getUserMedia) {
 
       audio.controls = true;
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-      add(blob)
+      add(blob) // add blob to indexedb
+      updateSyncBtn() // update sync button
       chunks = [];
       const audioURL = window.URL.createObjectURL(blob);
       audio.src = audioURL;

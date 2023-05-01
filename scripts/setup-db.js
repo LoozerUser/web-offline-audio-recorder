@@ -58,3 +58,20 @@ function add(data) {
        alert("entry has been removed from your database.");
     };
  }
+
+function countObjects(){
+    return new Promise (function(resolve) {
+        var request = window.indexedDB.open("recordsDB", 1);
+        request.onsuccess = function(event) {
+            // Use this db variable, not your global one
+            var db = event.target.result;
+            transaction = db.transaction(["records"], "readonly")
+            const objectStore = transaction.objectStore("records");
+
+            const countRequest = objectStore.count();
+            countRequest.onsuccess = () => {
+            return resolve(countRequest.result);
+            };
+        }
+    });
+ }
