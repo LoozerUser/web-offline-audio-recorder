@@ -15,6 +15,16 @@ stop.disabled = true;
 let audioCtx;
 const canvasCtx = canvas.getContext("2d");
 
+// online offline detection presentation and later usage
+
+window.addEventListener('online', bulber)
+window.addEventListener('offline', bulber)
+
+function bulber(event){
+  var cond = navigator.onLine ? "Online" : "Offline";
+  document.body.bulb = cond
+}
+
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
