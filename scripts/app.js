@@ -17,6 +17,8 @@ const canvasCtx = canvas.getContext("2d");
 
 // online offline detection presentation and later usage
 
+window.alert("works!")
+
 window.addEventListener('online', bulber)
 window.addEventListener('offline', bulber)
 
