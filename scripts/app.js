@@ -28,6 +28,10 @@ function bulber(event){
   }
 }
 
+var elements = document.getElementsByClassName("bulb");
+for(var i=0; i<elements.length; i++) { 
+  elements[i].innerHTML = "zzzz";
+}
 
 //main block for doing the audio recording
 
