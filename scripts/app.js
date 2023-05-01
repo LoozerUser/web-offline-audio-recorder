@@ -28,7 +28,7 @@ function bulber(event){
   }
 }
 
-smt = "lllllllll"
+smt = navigator.onLine
 var elements = document.getElementsByClassName("bulb");
 for(var i=0; i<elements.length; i++) { 
   elements[i].innerHTML = smt;
