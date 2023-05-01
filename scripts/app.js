@@ -62,7 +62,7 @@ async function createDB() {
   });
 }
 
-createDB;
+createDB();
 
 //main block for doing the audio recording
 
