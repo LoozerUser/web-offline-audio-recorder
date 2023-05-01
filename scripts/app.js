@@ -17,6 +17,13 @@ const canvasCtx = canvas.getContext("2d");
 
 // online offline detection presentation and later usage
 
+
+smt = navigator.onLine ? "Online": "Offline";
+var elements = document.getElementsByClassName("bulb");
+for(var i=0; i<elements.length; i++) { 
+  elements[i].innerHTML = smt;
+}
+
 window.addEventListener('online', bulber);
 window.addEventListener('offline', bulber);
 
@@ -27,6 +34,7 @@ function bulber(event){
    elements[i].innerHTML = cond;
   }
 }
+
 
 //main block for doing the audio recording
 
