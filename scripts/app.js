@@ -95,6 +95,12 @@ if (navigator.mediaDevices.getUserMedia) {
       record.disabled = false;
     }
 
+    document.getElementsById("idic").addEventListener('click', kkk);
+
+    function kkk(){
+      window.alert("works!");
+    }
+
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
 
@@ -137,11 +143,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
       addData;
 
-      document.getElementsById("idic").addEventListener('click', kkk);
 
-      function kkk(){
-        window.alert("works!");
-      }
       
       deleteButton.onclick = function(e) {
         e.target.closest(".clip").remove();
