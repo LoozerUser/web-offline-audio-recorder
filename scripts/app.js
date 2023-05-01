@@ -28,11 +28,11 @@ function bulber(event){
   }
 }
 
+smt = "lllllllll"
 var elements = document.getElementsByClassName("bulb");
 for(var i=0; i<elements.length; i++) { 
-  elements[i].innerHTML = "zzzz";
+  elements[i].innerHTML = smt;
 }
-document.getElementsByClassName("bulb").innerHTML() = "ccccc"
 
 //main block for doing the audio recording
 
