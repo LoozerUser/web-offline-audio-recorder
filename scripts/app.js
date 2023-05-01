@@ -134,11 +134,10 @@ if (navigator.mediaDevices.getUserMedia) {
         
         const tx = await db.transaction('recs', 'readwrite');
         const store = tx.objectStore('recs');
-        const xmpl = [1, "a", true, { 'type': 'here!'}] 
-        store.add(xmpl);
+        store.add([1,2,3,4]);
         await tx.done;
       }
-
+      
       deleteButton.onclick = function(e) {
         e.target.closest(".clip").remove();
       }
