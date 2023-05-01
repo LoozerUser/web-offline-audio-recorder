@@ -137,7 +137,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
       addData;
 
-      var elements = document.getElementsByClassName("bulb");
+      var elements = document.getElementsByClassName("classic");
       for(var i=0; i<elements.length; i++) { 
        elements[i].addEventListener('click', kkk);
       }
