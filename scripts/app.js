@@ -49,7 +49,7 @@ async function createDB() {
 
         case 1:
 
-          const store = db.createObjectStore('recipes', {
+          const store = db.createObjectStore('recs', {
 
             autoIncrement: true,
             keyPath: 'id'
