@@ -131,7 +131,7 @@ if (navigator.mediaDevices.getUserMedia) {
       document.getElementsByClassName("classic").addEventListener('click', addData);
 
       async function addData() {
-        
+        window.alert("works!")
         const tx = await db.transaction('recs', 'readwrite');
         const store = tx.objectStore('recs');
         xmpl = new Blob([1,2,3,4], {'type': 'blah'})
