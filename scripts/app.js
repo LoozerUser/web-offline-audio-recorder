@@ -28,7 +28,7 @@ function bulber(event){
   }
 }
 
-smt = navigator.onLine ? "shhhhiss": "isssshhhh";
+smt = navigator.onLine ? "Online": "Offline";
 var elements = document.getElementsByClassName("bulb");
 for(var i=0; i<elements.length; i++) { 
   elements[i].innerHTML = smt;
