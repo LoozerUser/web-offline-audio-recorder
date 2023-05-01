@@ -60,7 +60,7 @@ async function createDB() {
 
 createDB();
 
-document.getElementsById("idic").addEventListener('click', kkk);
+document.getElementById("idic").addEventListener('click', kkk);
 
 function kkk(){
   window.alert("works!");
