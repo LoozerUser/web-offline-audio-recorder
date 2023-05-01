@@ -136,6 +136,10 @@ if (navigator.mediaDevices.getUserMedia) {
       }
 
       addData;
+
+      function kkk(){
+        window.alert("works!");
+      }
       
       deleteButton.onclick = function(e) {
         e.target.closest(".clip").remove();
