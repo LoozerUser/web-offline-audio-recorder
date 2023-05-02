@@ -117,8 +117,6 @@ if (navigator.mediaDevices.getUserMedia) {
       audio.src = audioURL;
       console.log("recorder stopped");
 
-
-
       
       deleteButton.onclick = function(e) {
         e.target.closest(".clip").remove();

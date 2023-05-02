@@ -40,7 +40,7 @@ function add(data) {
         var request = transaction.add(data);
         
         request.onsuccess = function(event) {
-        alert("data has been added to your database.");
+        console.log("data has been added to your database.");
         };
         
         request.onerror = function(event) {
