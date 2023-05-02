@@ -5,8 +5,8 @@ const OFFLINE_URL = '/../offline-demo.html';
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
-    const cache = await caches.open(cacheName)                            3
-      .then(cache => cache.addAll([                   4
+    const cache = await caches.open(cacheName)
+      .then(cache => cache.addAll([
         '/scripts/app.js',
         '/setup-db.js',
         '/../styles/app.css',
