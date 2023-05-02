@@ -1,7 +1,7 @@
 const OFFLINE_VERSION = 1;
 const CACHE_NAME = 'offline';
 // Customize this with a different URL if needed.
-const OFFLINE_URL = '/../offline-demo.html';
+const OFFLINE_URL = '/../index.html';
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
@@ -10,8 +10,7 @@ self.addEventListener('install', (event) => {
         '/scripts/app.js',
         '/scripts/setup-db.js',
         '/styles/app.css',
-        '/index.html',
-        '/offline-demo.html'
+        '/index.html'
       ]))
     // Setting {cache: 'reload'} in the new request will ensure that the response
     // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
