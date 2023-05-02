@@ -7,11 +7,11 @@ self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME)
       .then(cache => cache.addAll([
-        '/app.js',
-        '/setup-db.js',
-        '/../styles/app.css',
-        '/../index.html',
-        '/../offline-demo.html'
+        '/scripts/app.js',
+        '/scripts/setup-db.js',
+        '/styles/app.css',
+        '/index.html',
+        '/offline-demo.html'
       ]))
     // Setting {cache: 'reload'} in the new request will ensure that the response
     // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
