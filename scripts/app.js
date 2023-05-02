@@ -42,6 +42,7 @@ window.addEventListener('online', bulber);
 window.addEventListener('offline', bulber);
 
 function bulber(event){
+  updateSyncBtn()
   var cond = navigator.onLine ? "Online" : "Offline";
   var elements = document.getElementsByClassName("bulb");
   for(var i=0; i<elements.length; i++) { 
@@ -49,10 +50,16 @@ function bulber(event){
   }
 }
 function updateSyncBtn(){
+  var cond = navigator.onLine ? "Online" : "Offline";
+  if (cond == "Online") {
+    syncBtn.style.background = "green";
+  } else {
+    syncBtn.style.background = "orange";
+  }
   countObjects().then( function(objCount) {
   console.log(objCount)
   if (objCount == 0) {
-    syncBtn.innerHTML = "🔄 already sync"
+    syncBtn.innerHTML = "🔄  already sync"
   } else {
     syncBtn.innerHTML = "🔄 "+objCount.toString() + " files waits to sync"
   }
