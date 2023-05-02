@@ -3,6 +3,11 @@ const CACHE_NAME = 'offline';
 // Customize this with a different URL if needed.
 const OFFLINE_URL = '/../index.html';
 
+const putInCache = async (request, response) => {
+  const cache = await caches.open(CACHE_NAME);
+  await cache.put(request, response);
+};
+
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME)
@@ -44,6 +49,7 @@ self.addEventListener('fetch', (event) => {
         }
 
         const networkResponse = await fetch(event.request);
+        putInCache(request, networkResponse.clone());
         return networkResponse;
       } catch (error) {
         // catch is only triggered if an exception is thrown, which is likely
