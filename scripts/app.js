@@ -63,17 +63,18 @@ emptyBtn.onclick = function () {
 }
 
 function updateTrashBtn(){
-  if (objCount > 0) {
-    emptyBtn.style.background = "red";
-    emptyBtn.innerHTML = "🗑️ Delete data"
-  }
-  else {
-    emptyBtn.style.background = "orange";
-    emptyBtn.innerHTML = "🗑️ No data to delete";
-  }
+  countObjects().then(function (objCount) {
+    console.log(objCount);
+    if (objCount > 0) {
+      emptyBtn.style.background = "red";
+      emptyBtn.innerHTML = "🗑️ Delete data"
+    } else {
+      emptyBtn.style.background = "orange";
+      emptyBtn.innerHTML = "🗑️ No data to delete";
+    }
+  })
 }
 
-updateTrashBtn;
 
 //main block for doing the audio recording
 
