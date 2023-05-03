@@ -27,7 +27,7 @@ request.onsuccess = function(event) {
 request.onupgradeneeded = function(event) {
     var db = event.target.result;
     var objectStore = db.createObjectStore("records", {keyPath: "id", autoIncrement:true});
-    
+
 }
 
 function add(data) {
@@ -48,20 +48,18 @@ function add(data) {
     }
  }
 
-window.addEventListener('online', removeAll);
-
- function removeAll() {
+ function empty() {
     var request = window.indexedDB.open("recordsDB", 1);
     request.onsuccess = function(event) {
         // Use this db variable, not your global one
         var db = event.target.result;
-        transaction = db.transaction(["records"], "readwrite").objectStore("records");
+        transaction = db.transaction(["records"], "readwrite").objectStore("records").clear();
         request.onsuccess = function(event) {
-            console.log("data has been added to your database.");
+            console.log("all data has been deleted from your database.");
             };
             
             request.onerror = function(event) {
-            alert("Unable to add data");
+            alert("Unable to delete data");
             }
         }
  }
