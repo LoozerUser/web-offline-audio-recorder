@@ -57,13 +57,12 @@ function updateSyncBtn() {
   })
 }
 
-updateSyncBtn;
 
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
   console.log('getUserMedia supported.');
-
+  updateSyncBtn();
   const constraints = { audio: true };
   let chunks = [];
 
