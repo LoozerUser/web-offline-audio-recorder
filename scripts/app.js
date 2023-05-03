@@ -57,10 +57,6 @@ updateSyncBtn;
 
 window.addEventListener('onload', updateTrashBtn);
 
-emptyBtn.onclick = function () {
-  empty();
-  updateTrashBtn();
-}
 
 function updateTrashBtn(){
   countObjects().then(function (objCount) {
@@ -97,6 +93,11 @@ if (navigator.mediaDevices.getUserMedia) {
 
       stop.disabled = false;
       record.disabled = true;
+    }
+
+    emptyBtn.onclick = function () {
+      empty();
+      updateTrashBtn();
     }
 
     stop.onclick = function () {
