@@ -53,18 +53,27 @@ function updateSyncBtn() {
   })
 }
 
-updateSyncBtn()
+updateSyncBtn;
+
+window.addEventListener('onload', updateTrashBtn);
 
 emptyBtn.onclick = function () {
   empty;
-  emptyBtn.style.background = "orange";
-  emptyBtn.innerHTML = "🗑️ No data to delete";
+  updateTrashBtn;
 }
 
 function updateTrashBtn(){
-  emptyBtn.style.background = "red";
-  emptyBtn.innerHTML = "🗑️ Delete data"
+  if (objCount > 0) {
+    emptyBtn.style.background = "red";
+    emptyBtn.innerHTML = "🗑️ Delete data"
+  }
+  else {
+    emptyBtn.style.background = "orange";
+    emptyBtn.innerHTML = "🗑️ No data to delete";
+  }
 }
+
+updateTrashBtn;
 
 //main block for doing the audio recording
 
