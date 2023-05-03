@@ -53,7 +53,7 @@ function updateSyncBtn(){
   if (objCount == 0) {
     syncBtn.innerHTML = "🔄  synchronized and " + cond
   } else {
-    syncBtn.innerHTML = "🔄 "+objCount.toString() + " files waits to sync - "+cond
+    syncBtn.innerHTML = "🔄 "+objCount.toString() + " files waits to sync - "+ cond
   }
 })
 }
