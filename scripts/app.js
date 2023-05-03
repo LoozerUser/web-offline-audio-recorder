@@ -21,6 +21,7 @@ const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
 const syncBtn = document.querySelector('#sync-btn');
 const emptyBtn = document.querySelector('#empty-btn');
+
 // disable stop button while not recording
 
 stop.disabled = true;
@@ -32,38 +33,39 @@ const canvasCtx = canvas.getContext("2d");
 
 // online offline detection and presentation
 
-
-smt = navigator.onLine ? "Online": "Offline";
-var elements = document.getElementsByClassName("bulb");
-for(var i=0; i<elements.length; i++) { 
-  elements[i].innerHTML = smt;
-}
-
 window.addEventListener('online', updateSyncBtn);
 window.addEventListener('offline', updateSyncBtn);
 
-function updateSyncBtn(){
-  var cond = navigator.onLine ? "Online" : "Offline";
-  if (cond == "Online") {
+function updateSyncBtn() {
+  var cond = navigator.onLine ? "(Online)" : "(Offline)";
+  if (cond == "(Online)") {
     syncBtn.style.background = "green";
   } else {
     syncBtn.style.background = "orange";
   }
-  countObjects().then( function(objCount) {
-  console.log(objCount)
-  if (objCount == 0) {
-    syncBtn.innerHTML = "🔄  synchronized and " + cond
-  } else {
-    syncBtn.innerHTML = "🔄 "+objCount.toString() + " files waits to sync - "+ cond
-  }
-})
-}
-
-emptyBtn.onclick = function() {
-empty;
+  countObjects().then(function (objCount) {
+    console.log(objCount);
+    if (objCount == 0) {
+      syncBtn.innerHTML = "🔄 Synchronized " + cond;
+    } else {
+      syncBtn.innerHTML = "🔄 " + objCount.toString() + " Waits to sync " + cond;
+    }
+  })
 }
 
 updateSyncBtn()
+
+emptyBtn.onclick = function () {
+  empty;
+  emptyBtn.style.background = "orange";
+  emptyBtn.innerHTML = "🗑️ No data to delete";
+}
+
+function updateTrashBtn(){
+  emptyBtn.style.background = "red";
+  emptyBtn.innerHTML = "🗑️ Delete data"
+}
+
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
@@ -72,12 +74,12 @@ if (navigator.mediaDevices.getUserMedia) {
   const constraints = { audio: true };
   let chunks = [];
 
-  let onSuccess = function(stream) {
+  let onSuccess = function (stream) {
     const mediaRecorder = new MediaRecorder(stream);
 
     visualize(stream);
 
-    record.onclick = function() {
+    record.onclick = function () {
       mediaRecorder.start();
       console.log(mediaRecorder.state);
       console.log("recorder started");
@@ -87,23 +89,22 @@ if (navigator.mediaDevices.getUserMedia) {
       record.disabled = true;
     }
 
-    stop.onclick = function() {
+    stop.onclick = function () {
       mediaRecorder.stop();
       console.log(mediaRecorder.state);
       console.log("recorder stopped");
       record.style.background = "";
       record.style.color = "";
-      // mediaRecorder.requestData();
 
       stop.disabled = true;
       record.disabled = false;
     }
 
 
-    mediaRecorder.onstop = function(e) {
+    mediaRecorder.onstop = function (e) {
       console.log("data available after MediaRecorder.stop() called.");
 
-      const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
+      const clipName = prompt('Enter a name for your sound clip?', 'My unnamed clip');
 
       const clipContainer = document.createElement('article');
       const clipLabel = document.createElement('p');
@@ -115,7 +116,7 @@ if (navigator.mediaDevices.getUserMedia) {
       deleteButton.textContent = 'Delete';
       deleteButton.className = 'delete';
 
-      if(clipName === null) {
+      if (clipName === null) {
         clipLabel.textContent = 'My unnamed clip';
       } else {
         clipLabel.textContent = clipName;
@@ -127,23 +128,23 @@ if (navigator.mediaDevices.getUserMedia) {
       soundClips.appendChild(clipContainer);
 
       audio.controls = true;
-      const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-      add(blob) // add blob to indexedb
-      updateSyncBtn() // update sync button
+      const blob = new Blob(chunks, { 'type': 'audio/ogg; codecs=opus' });
+      add(blob); // add blob to indexedb
+      updateSyncBtn(); // update sync button
       chunks = [];
       const audioURL = window.URL.createObjectURL(blob);
       audio.src = audioURL;
       console.log("recorder stopped");
 
-      
-      deleteButton.onclick = function(e) {
+
+      deleteButton.onclick = function (e) {
         e.target.closest(".clip").remove();
       }
 
-      clipLabel.onclick = function() {
+      clipLabel.onclick = function () {
         const existingName = clipLabel.textContent;
         const newClipName = prompt('Enter a new name for your sound clip?');
-        if(newClipName === null) {
+        if (newClipName === null) {
           clipLabel.textContent = existingName;
         } else {
           clipLabel.textContent = newClipName;
@@ -151,23 +152,23 @@ if (navigator.mediaDevices.getUserMedia) {
       }
     }
 
-    mediaRecorder.ondataavailable = function(e) {
+    mediaRecorder.ondataavailable = function (e) {
       chunks.push(e.data);
     }
   }
 
-  let onError = function(err) {
+  let onError = function (err) {
     console.log('The following error occured: ' + err);
   }
 
   navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
 
 } else {
-   console.log('getUserMedia not supported on your browser!');
+  console.log('getUserMedia not supported on your browser!');
 }
 
 function visualize(stream) {
-  if(!audioCtx) {
+  if (!audioCtx) {
     audioCtx = new AudioContext();
   }
 
@@ -203,12 +204,12 @@ function visualize(stream) {
     let x = 0;
 
 
-    for(let i = 0; i < bufferLength; i++) {
+    for (let i = 0; i < bufferLength; i++) {
 
       let v = dataArray[i] / 128.0;
-      let y = v * HEIGHT/2;
+      let y = v * HEIGHT / 2;
 
-      if(i === 0) {
+      if (i === 0) {
         canvasCtx.moveTo(x, y);
       } else {
         canvasCtx.lineTo(x, y);
@@ -217,13 +218,13 @@ function visualize(stream) {
       x += sliceWidth;
     }
 
-    canvasCtx.lineTo(canvas.width, canvas.height/2);
+    canvasCtx.lineTo(canvas.width, canvas.height / 2);
     canvasCtx.stroke();
 
   }
 }
 
-window.onresize = function() {
+window.onresize = function () {
   canvas.width = mainSection.offsetWidth;
 }
 
