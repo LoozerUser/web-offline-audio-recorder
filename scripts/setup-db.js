@@ -27,7 +27,7 @@ request.onsuccess = function(event) {
 request.onupgradeneeded = function(event) {
     var db = event.target.result;
     var objectStore = db.createObjectStore("records", {keyPath: "id", autoIncrement:true});
-
+    
 }
 
 function add(data) {
@@ -47,6 +47,8 @@ function add(data) {
         }
     }
  }
+
+window.addEventListener('online', removeAll);
 
  function removeAll() {
     var request = window.indexedDB.open("recordsDB", 1);
