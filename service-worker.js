@@ -36,17 +36,19 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    fetch(event.request)
-     .then((networkResponse) => {
-       return caches.open(currentCache).then((cache) => {
-         cache.put(event.request, networkResponse.clone());
-         return networkResponse;
-       })
-     })
-     .catch(() => {
-       return caches.match(event.request);
-     })
+self.addEventListener("fetch", (e) => {
+  e.respondWith(
+    (async () => {
+      const r = await caches.match(e.request);
+      console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
+      if (r) {
+        return r;
+      }
+      const response = await fetch(e.request);
+      const cache = await caches.open(CACHE_NAME);
+      console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+      cache.put(e.request, response.clone());
+      return response;
+    })()
   );
 });
