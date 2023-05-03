@@ -57,7 +57,7 @@ updateSyncBtn;
 
 window.addEventListener('onload', updateTrashBtn);
 
-emptybtn.onclick = function () {
+emptyBtn.onclick = function () {
   empty;
   updateTrashBtn;
 }
@@ -66,11 +66,11 @@ function updateTrashBtn(){
   countObjects().then(function (objCount) {
     console.log(objCount);
     if (objCount > 0) {
-      emptybtn.style.background = "red";
-      emptybtn.innerHTML = "🗑️ Delete data"
+      emptyBtn.style.background = "red";
+      emptyBtn.innerHTML = "🗑️ Delete data"
     } else {
-      emptybtn.style.background = "orange";
-      emptybtn.innerHTML = "🗑️ No data to delete";
+      emptyBtn.style.background = "orange";
+      emptyBtn.innerHTML = "🗑️ No data to delete";
     }
   })
 }
