@@ -20,6 +20,7 @@ const soundClips = document.querySelector('.sound-clips');
 const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
 const syncBtn = document.querySelector('#sync-btn');
+const emptyBtn = document.querySelector('#empty-btn');
 // disable stop button while not recording
 
 stop.disabled = true;
@@ -56,6 +57,10 @@ function updateSyncBtn(){
     syncBtn.innerHTML = "🔄 "+objCount.toString() + " files waits to sync - "+ cond
   }
 })
+}
+
+emptyBtn.onclick = function() {
+empty;
 }
 
 updateSyncBtn()
