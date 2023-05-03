@@ -35,11 +35,12 @@ function add(data) {
     request.onsuccess = function(event) {
         // Use this db variable, not your global one
         var db = event.target.result;
-        transaction = db.transaction(["records"], "readwrite").objectStore("records")
+        transaction = db.transaction(["records"], "readwrite").objectStore("records");
         var request = transaction.add(data);
         
         request.onsuccess = function(event) {
         console.log("data has been added to your database.");
+        updateTrashBtn; //updates empty button
         };
         
         request.onerror = function(event) {
