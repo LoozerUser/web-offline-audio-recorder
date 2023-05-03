@@ -58,8 +58,8 @@ updateSyncBtn;
 window.addEventListener('onload', updateTrashBtn);
 
 emptyBtn.onclick = function () {
-  empty;
-  updateTrashBtn;
+  empty();
+  updateTrashBtn();
 }
 
 function updateTrashBtn(){
