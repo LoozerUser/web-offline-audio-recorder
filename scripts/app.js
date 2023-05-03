@@ -83,6 +83,9 @@ if (navigator.mediaDevices.getUserMedia) {
 
     emptyBtn.onclick = function () {
       empty();
+      document.querySelector(".clip").forEach((clip) => {
+        clip.remove();
+      });
       updateSyncBtn();
     }
 
