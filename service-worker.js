@@ -36,8 +36,8 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-self.addEventListener("fetch", (e) => {
-  e.respondWith(
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
     fetch(event.request)
      .then((networkResponse) => {
        return caches.open(currentCache).then((cache) => {
