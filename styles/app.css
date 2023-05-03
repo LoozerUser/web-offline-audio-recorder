@@ -35,7 +35,7 @@
     margin-bottom: 0.5rem;
   }
   
-  #buttons {
+  .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
