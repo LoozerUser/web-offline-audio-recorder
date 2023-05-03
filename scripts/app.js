@@ -47,30 +47,17 @@ function updateSyncBtn() {
     console.log(objCount);
     if (objCount == 0) {
       syncBtn.innerHTML = "🔄 Synchronized " + cond;
+      emptyBtn.style.background = "orange";
+      emptyBtn.innerHTML = "🗑️ No data to delete";
     } else {
       syncBtn.innerHTML = "🔄 " + objCount.toString() + " Waits to sync " + cond;
+      emptyBtn.style.background = "red";
+      emptyBtn.innerHTML = "🗑️ Delete data"
     }
   })
 }
 
 updateSyncBtn;
-
-window.addEventListener('onload', updateTrashBtn);
-
-
-function updateTrashBtn(){
-  countObjects().then(function (objCount) {
-    console.log(objCount);
-    if (objCount > 0) {
-      emptyBtn.style.background = "red";
-      emptyBtn.innerHTML = "🗑️ Delete data"
-    } else {
-      emptyBtn.style.background = "orange";
-      emptyBtn.innerHTML = "🗑️ No data to delete";
-    }
-  })
-}
-
 
 //main block for doing the audio recording
 

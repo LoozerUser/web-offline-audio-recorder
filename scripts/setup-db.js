@@ -40,7 +40,6 @@ function add(data) {
         
         request.onsuccess = function(event) {
         console.log("data has been added to your database.");
-        updateTrashBtn; //updates empty button
         };
         
         request.onerror = function(event) {
