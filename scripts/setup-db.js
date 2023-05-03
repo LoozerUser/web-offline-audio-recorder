@@ -35,8 +35,7 @@ function add(data) {
     request.onsuccess = function(event) {
         // Use this db variable, not your global one
         var db = event.target.result;
-        transaction = db.transaction(["records"], "readwrite")
-        .objectStore("records")
+        transaction = db.transaction(["records"], "readwrite").objectStore("records")
         var request = transaction.add(data);
         
         request.onsuccess = function(event) {
@@ -47,6 +46,22 @@ function add(data) {
         alert("Unable to add data");
         }
     }
+ }
+
+ function removeAll() {
+    var request = window.indexedDB.open("recordsDB", 1);
+    request.onsuccess = function(event) {
+        // Use this db variable, not your global one
+        var db = event.target.result;
+        transaction = db.transaction(["records"], "readwrite").objectStore("records");
+        request.onsuccess = function(event) {
+            console.log("data has been added to your database.");
+            };
+            
+            request.onerror = function(event) {
+            alert("Unable to add data");
+            }
+        }
  }
  
  function remove(id) {

@@ -38,17 +38,9 @@ for(var i=0; i<elements.length; i++) {
   elements[i].innerHTML = smt;
 }
 
-window.addEventListener('online', bulber);
-window.addEventListener('offline', bulber);
+window.addEventListener('online', updateSyncBtn);
+window.addEventListener('offline', updateSyncBtn);
 
-function bulber(event){
-  updateSyncBtn()
-  var cond = navigator.onLine ? "Online" : "Offline";
-  var elements = document.getElementsByClassName("bulb");
-  for(var i=0; i<elements.length; i++) { 
-   elements[i].innerHTML = cond;
-  }
-}
 function updateSyncBtn(){
   var cond = navigator.onLine ? "Online" : "Offline";
   if (cond == "Online") {
