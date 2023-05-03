@@ -83,7 +83,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
     emptyBtn.onclick = function () {
       empty();
-      updateTrashBtn();
+      updateSyncBtn();
     }
 
     stop.onclick = function () {
